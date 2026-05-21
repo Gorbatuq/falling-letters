@@ -1,3 +1,9 @@
+## Live demo
+
+The project is deployed on Vercel and can be tested here:
+
+https://falling-letters-opal.vercel.app/
+
 # Falling Letters Stylish Rank Game
 
 Plain HTML/CSS/JavaScript version split into readable files. No build step and no dependencies except Google Fonts.
