@@ -1,0 +1,305 @@
+@keyframes idleGoldenLetterFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -22vh, 0) rotate(var(--rotation))
+      scale(0.94);
+  }
+  12% {
+    opacity: var(--peak-opacity);
+  }
+  82% {
+    opacity: var(--peak-opacity);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), 150vh, 0)
+      rotate(calc(var(--rotation) + var(--spin))) scale(1.08);
+  }
+}
+
+@keyframes buttonGoldSheen {
+  from {
+    background-position: 160% 50%;
+  }
+  to {
+    background-position: -80% 50%;
+  }
+}
+
+@keyframes pulseDanger {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.72;
+  }
+}
+
+@keyframes styleHitPulse {
+  48% {
+    transform: skewX(-9deg) translateX(2px) scale(1.13);
+  }
+}
+
+@keyframes rankUpImpact {
+  0% {
+    transform: skewX(-9deg) translateX(2px) scale(0.86);
+    filter: blur(2px) drop-shadow(7px 8px 0 rgba(0, 0, 0, 0.82))
+      drop-shadow(0 0 18px var(--rank-glow));
+  }
+  45% {
+    transform: skewX(-9deg) translateX(2px) scale(1.24);
+  }
+}
+
+@keyframes resultRankPulse {
+  50% {
+    transform: skewX(-9deg) translateX(2px) scale(1.075);
+  }
+}
+
+@keyframes letterHit {
+  to {
+    transform: translate3d(var(--x), var(--y), 0) scale(1.9);
+    filter: blur(8px);
+    opacity: 0;
+  }
+}
+
+@keyframes countdownImpact {
+  0% {
+    transform: scale(0.65);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.35);
+    filter: blur(2px);
+    opacity: 0;
+  }
+}
+
+@keyframes scoreImpact {
+  0% {
+    transform: translateX(-50%) translateY(0) scale(0.75);
+    opacity: 0;
+  }
+  25% {
+    transform: translateX(-50%) translateY(-6px) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-24px) scale(1.7);
+    filter: blur(2px);
+    opacity: 0;
+  }
+}
+
+@keyframes resultPanelIn {
+  from {
+    transform: translateX(-22px);
+    opacity: 0;
+  }
+}
+
+@keyframes resultMainScorePulse {
+  50% {
+    transform: scale(1.045);
+    text-shadow:
+      0 0 18px rgba(216, 179, 90, 0.46),
+      0 0 32px rgba(216, 179, 90, 0.16);
+  }
+}
+
+@keyframes resultFieldIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.7);
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.92);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes resultFlash {
+  0% {
+    transform: translateX(-85%) rotate(8deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(85%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes finalRankToast {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+    filter: blur(4px);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  58% {
+    opacity: 1;
+    transform: scale(1.035);
+    filter: blur(0);
+  }
+  82% {
+    opacity: 0.78;
+    transform: translateY(-4px) scale(1.08);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scale(1.18);
+    filter: blur(12px);
+  }
+}
+
+@keyframes rankToastSmoke {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.62);
+  }
+  26% {
+    opacity: 0.34;
+  }
+  70% {
+    opacity: 0.24;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px) scale(1.72);
+  }
+}
+
+@keyframes finalCrackStrike {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    filter: blur(3px);
+  }
+  18% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    filter: blur(0);
+  }
+  58% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    filter: blur(2px);
+  }
+}
+
+@keyframes finalArenaFlashPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  68% {
+    opacity: 0.62;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.16);
+  }
+}
+
+@keyframes finalArenaFramePulse {
+  0% {
+    opacity: 0;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  26% {
+    opacity: 1;
+    border-color: var(--arena-glow-border);
+    box-shadow:
+      0 0 38px 10px var(--arena-glow-outer),
+      inset 0 0 34px var(--arena-glow-inner);
+  }
+  70% {
+    opacity: 0.72;
+    border-color: rgba(255, 238, 178, 0.48);
+  }
+  100% {
+    opacity: 0;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
+@keyframes sparkBurst {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(8px) scale(0.45);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(var(--radius)) scale(0.05);
+  }
+}
+
+@keyframes arenaOrbitDrop {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes arenaFlashPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes arenaFramePulse {
+  30% {
+    opacity: 1;
+    border-color: var(--arena-glow-border);
+    box-shadow:
+      0 0 30px 8px var(--arena-glow-outer),
+      inset 0 0 28px var(--arena-glow-inner);
+  }
+  100% {
+    opacity: 0;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}

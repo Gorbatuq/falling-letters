@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Falling Letters Stylish Rank Game</title>
+
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+
+  <body>
+    <div
+      id="idleLetterBackdrop"
+      class="idle-letter-backdrop"
+      aria-hidden="true"
+    >
+      <span
+        class="idle-bg-letter"
+        style="
+          --x: 6vw;
+          --size: 28vw;
+          --rotation: -12deg;
+          --spin: 24deg;
+          --drift: 7vw;
+          --duration: 18s;
+          --delay: -9s;
+          --peak-opacity: 0.16;
+        "
+        >S</span
+      >
+      <span
+        class="idle-bg-letter"
+        style="
+          --x: 24vw;
+          --size: 22vw;
+          --rotation: 8deg;
+          --spin: -18deg;
+          --drift: -5vw;
+          --duration: 22s;
+          --delay: -4s;
+          --peak-opacity: 0.12;
+        "
+        >A</span
+      >
+      <span
+        class="idle-bg-letter"
+        style="
+          --x: 43vw;
+          --size: 31vw;
+          --rotation: -7deg;
+          --spin: 16deg;
+          --drift: 4vw;
+          --duration: 26s;
+          --delay: -16s;
+          --peak-opacity: 0.11;
+        "
+        >K</span
+      >
+      <span
+        class="idle-bg-letter"
+        style="
+          --x: 65vw;
+          --size: 25vw;
+          --rotation: 13deg;
+          --spin: -22deg;
+          --drift: -8vw;
+          --duration: 20s;
+          --delay: -11s;
+          --peak-opacity: 0.14;
+        "
+        >Q</span
+      >
+      <span
+        class="idle-bg-letter"
+        style="
+          --x: 82vw;
+          --size: 34vw;
+          --rotation: -18deg;
+          --spin: 28deg;
+          --drift: -10vw;
+          --duration: 28s;
+          --delay: -2s;
+          --peak-opacity: 0.1;
+        "
+        >Z</span
+      >
+      <span
+        class="idle-bg-letter"
+        style="
+          --x: 14vw;
+          --size: 20vw;
+          --rotation: 16deg;
+          --spin: -24deg;
+          --drift: 8vw;
+          --duration: 24s;
+          --delay: -19s;
+          --peak-opacity: 0.13;
+        "
+        >R</span
+      >
+    </div>
+    <main class="app">
+      <div class="game-layout">
+        <div id="arenaShell" class="arena-shell">
+          <canvas
+            id="arenaCracksCanvas"
+            class="arena-cracks-canvas"
+            aria-hidden="true"
+          ></canvas>
+          <div id="gameArea" class="game-area">
+            <div class="arena-flash" aria-hidden="true"></div>
+            <div class="arena-frame-glow" aria-hidden="true"></div>
+            <div id="finalCracks" class="final-cracks" aria-hidden="true"></div>
+            <div
+              id="arenaOrbitDrop"
+              class="arena-orbit-drop"
+              aria-hidden="true"
+            ></div>
+            <div id="countdown" class="countdown hidden"></div>
+            <div
+              id="rankToast"
+              class="rank-toast hidden"
+              aria-hidden="true"
+            ></div>
+            <section id="result" class="result hidden"></section>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <div id="styleRank" class="style-rank" data-rank-index="0">
+            <svg
+              class="style-rank-svg"
+              viewBox="0 0 286 132"
+              preserveAspectRatio="xMinYMid meet"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient
+                  id="rankFillGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop class="rank-stop-1" offset="0%" />
+                  <stop class="rank-stop-2" offset="28%" />
+                  <stop class="rank-stop-3" offset="55%" />
+                  <stop class="rank-stop-4" offset="78%" />
+                  <stop class="rank-stop-5" offset="100%" />
+                </linearGradient>
+                <linearGradient
+                  id="rankShineGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.9)" />
+                  <stop offset="18%" stop-color="rgba(255,255,255,0.42)" />
+                  <stop offset="36%" stop-color="rgba(255,255,255,0.08)" />
+                  <stop offset="54%" stop-color="rgba(255,255,255,0)" />
+                </linearGradient>
+              </defs>
+              <text class="style-rank-text shadow js-rank-text" x="16" y="106">
+                D
+              </text>
+              <text class="style-rank-text fill js-rank-text" x="16" y="106">
+                D
+              </text>
+              <text class="style-rank-text shine js-rank-text" x="16" y="106">
+                D
+              </text>
+            </svg>
+            <span id="styleRankName" class="style-rank-name">Dismal</span>
+            <div class="style-progress" aria-hidden="true">
+              <div id="styleProgressFill" class="style-progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="hud">
+            <div class="hud-item">
+              <span class="hud-label">Time</span>
+              <strong id="time" class="hud-value">0</strong>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">Score</span>
+              <strong id="score" class="hud-value">0</strong>
+              <div id="scoreImpact" class="score-impact hidden"></div>
+            </div>
+          </div>
+
+          <button id="startButton" type="button">
+            <span class="button-text">Start Mission</span>
+          </button>
+        </aside>
+      </div>
+    </main>
+    <div
+      id="scoreHelp"
+      class="score-help"
+      role="dialog"
+      aria-labelledby="scoreHelpTitle"
+      aria-hidden="true"
+    ></div>
+    <button
+      id="helpButton"
+      class="help-button"
+      type="button"
+      aria-controls="scoreHelp"
+      aria-expanded="false"
+      aria-label="Show score rules"
+    >
+      ?
+    </button>
+
+    <script src="./src/js/01-config.js" defer></script>
+    <script src="./src/js/02-dom.js" defer></script>
+    <script src="./src/js/03-state.js" defer></script>
+    <script src="./src/js/04-helpers.js" defer></script>
+    <script src="./src/js/05-score-rank.js" defer></script>
+    <script src="./src/js/06-ui.js" defer></script>
+    <script src="./src/js/07-letters.js" defer></script>
+    <script src="./src/js/08-input-scoring.js" defer></script>
+    <script src="./src/js/09-particles.js" defer></script>
+    <script src="./src/js/10-final-sequence.js" defer></script>
+    <script src="./src/js/11-game-loop.js" defer></script>
+  </body>
+</html>

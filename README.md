@@ -80,4 +80,3 @@ The project is built with vanilla HTML, CSS, and JavaScript. The only external r
 ## Platform notes
 
 The game is designed primarily for desktop keyboard input. The layout has basic responsive behavior, but the core gameplay expects a physical keyboard.
-# falling-letters

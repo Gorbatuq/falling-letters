@@ -1,0 +1,186 @@
+.app {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, calc(100vw - 32px));
+}
+
+.game-layout {
+  display: flex;
+  align-items: stretch;
+  gap: 30px;
+}
+
+.arena-shell {
+  position: relative;
+  flex: 0 0 740px;
+  width: 740px;
+  height: 640px;
+  overflow: visible;
+}
+
+.arena-cracks-canvas {
+  position: absolute;
+  inset: -56px;
+  z-index: 4;
+  width: calc(100% + 112px);
+  height: calc(100% + 112px);
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 120ms ease;
+}
+
+.arena-shell.final-cracks-active .arena-cracks-canvas {
+  opacity: 1;
+}
+
+.game-area {
+  --letter-scale: 1;
+  --arena-flash-core: rgba(255, 219, 126, 0.34);
+  --arena-flash-mid: rgba(255, 177, 70, 0.18);
+  --arena-flash-edge: rgba(255, 108, 52, 0.08);
+  --arena-glow-border: rgba(255, 235, 180, 0.78);
+  --arena-glow-outer: rgba(255, 183, 64, 0.52);
+  --arena-glow-inner: rgba(255, 190, 80, 0.22);
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(201, 196, 189, 0.28);
+  border-radius: 6px;
+  background:
+    radial-gradient(
+      circle at 50% 4%,
+      rgba(210, 202, 193, 0.12),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 82% 70%,
+      rgba(143, 29, 44, 0.22),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(42, 12, 25, 0.96) 0%,
+      rgba(14, 6, 14, 0.98) 100%
+    );
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.62),
+    inset 0 0 120px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.game-area::before,
+.game-area::after,
+.arena-flash,
+.arena-frame-glow {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.game-area::before {
+  inset: 0;
+  z-index: 20;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 18px rgba(18, 6, 14, 0.98),
+    inset 0 0 0 19px rgba(201, 196, 189, 0.1),
+    inset 0 0 36px 18px rgba(0, 0, 0, 0.48),
+    inset 0 0 70px 22px rgba(143, 29, 44, 0.14);
+}
+
+.game-area::after {
+  inset: 18px;
+  z-index: 21;
+  border: 1px solid rgba(201, 196, 189, 0.12);
+  box-shadow:
+    inset 0 0 0 1px rgba(70, 13, 24, 0.64),
+    inset 0 0 42px rgba(0, 0, 0, 0.42);
+}
+
+.side-panel {
+  width: 280px;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0 6px;
+}
+
+.hud {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 20px 0 100px;
+}
+
+.hud-item {
+  position: relative;
+  padding-left: 22px;
+  text-align: left;
+}
+
+.hud-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 54px;
+  background: linear-gradient(180deg, var(--silver), var(--blood));
+  box-shadow: 0 0 18px rgba(143, 29, 44, 0.72);
+}
+
+.hud-label,
+.result-label {
+  display: block;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hud-label {
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
+.hud-value,
+.result-value,
+button,
+.countdown,
+.score-impact,
+.style-rank-text,
+.result-title {
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 900;
+}
+
+.hud-value {
+  display: block;
+  color: var(--silver);
+  font-size: 62px;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  text-shadow:
+    0 0 14px rgba(255, 255, 255, 0.12),
+    3px 3px 0 rgba(0, 0, 0, 0.42);
+}
+
+#score {
+  color: var(--gold-soft);
+  text-shadow:
+    0 0 18px rgba(216, 179, 90, 0.32),
+    3px 3px 0 rgba(0, 0, 0, 0.42);
+}
+
+#time.danger {
+  color: var(--danger);
+  text-shadow:
+    0 0 16px rgba(255, 51, 79, 0.72),
+    3px 3px 0 rgba(0, 0, 0, 0.42);
+  animation: pulseDanger 0.75s ease-in-out infinite;
+}

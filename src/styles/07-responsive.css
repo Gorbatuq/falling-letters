@@ -1,0 +1,47 @@
+@media (max-width: 900px) {
+  .help-button {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .score-help {
+    right: 18px;
+    bottom: 76px;
+    width: min(286px, calc(100vw - 36px));
+  }
+
+  body {
+    overflow: auto;
+    padding: 18px 0;
+  }
+  .game-layout {
+    flex-direction: column;
+  }
+  .arena-shell {
+    flex-basis: auto;
+    width: 100%;
+    height: min(640px, calc(100vw - 32px));
+  }
+  .game-area {
+    width: 100%;
+    height: 100%;
+  }
+  .arena-cracks-canvas {
+    inset: -34px;
+    width: calc(100% + 68px);
+    height: calc(100% + 68px);
+  }
+  .side-panel {
+    width: 100%;
+    min-height: auto;
+    gap: 22px;
+  }
+  .hud {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+  }
+  .hud-value {
+    font-size: 48px;
+  }
+}

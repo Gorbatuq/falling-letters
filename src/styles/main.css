@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Marcellus+SC&display=swap");
+
+@import "./01-base.css";
+@import "./02-layout.css";
+@import "./03-rank.css";
+@import "./04-components.css";
+@import "./05-effects.css";
+@import "./06-animations.css";
+@import "./07-responsive.css";

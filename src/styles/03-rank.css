@@ -1,0 +1,204 @@
+.style-rank {
+  --rank-letter-size: 106px;
+  --rank-name-size: 18px;
+  --rank-stop-1: #f8fbff;
+  --rank-stop-2: #c8d0dc;
+  --rank-stop-3: #717b88;
+  --rank-stop-4: #2a3039;
+  --rank-stop-5: #080a0e;
+  --rank-glow: rgba(192, 210, 230, 0.22);
+
+  position: relative;
+  width: 100%;
+  margin-left: 12px;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.style-rank-svg {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 280px;
+  height: calc(var(--rank-letter-size) * 1.06);
+  overflow: visible;
+  transform: skewX(-9deg) translateX(2px);
+  transform-origin: 0 70%;
+  filter: drop-shadow(8px 9px 0 rgba(0, 0, 0, 0.84))
+    drop-shadow(0 0 18px var(--rank-glow));
+  transition:
+    height 220ms ease,
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.style-rank-text {
+  font-size: var(--rank-letter-size);
+  letter-spacing: -0.13em;
+  text-transform: uppercase;
+  dominant-baseline: alphabetic;
+}
+
+.style-rank-text.shadow {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.9);
+  stroke-width: 15px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.style-rank-text.fill {
+  fill: url(#rankFillGradient);
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1.3px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.style-rank-text.shine {
+  fill: url(#rankShineGradient);
+  opacity: 0.55;
+}
+
+.rank-stop-1 {
+  stop-color: var(--rank-stop-1);
+}
+.rank-stop-2 {
+  stop-color: var(--rank-stop-2);
+}
+.rank-stop-3 {
+  stop-color: var(--rank-stop-3);
+}
+.rank-stop-4 {
+  stop-color: var(--rank-stop-4);
+}
+.rank-stop-5 {
+  stop-color: var(--rank-stop-5);
+}
+
+.style-rank-name,
+.style-progress {
+  position: relative;
+  z-index: 3;
+}
+
+.style-rank-name {
+  display: block;
+  min-height: 28px;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: var(--rank-name-size);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    font-size 220ms ease;
+}
+
+.style-progress {
+  width: 90%;
+  height: 12px;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 196, 189, 0.25);
+  background: rgba(8, 2, 8, 0.78);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.68),
+    0 0 16px rgba(143, 29, 44, 0.22);
+}
+
+.style-progress-fill {
+  height: 100%;
+  width: 0%;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(143, 29, 44, 0.78),
+      rgba(216, 179, 90, 1)
+    ),
+    var(--gold);
+  box-shadow: 0 0 18px rgba(216, 179, 90, 0.62);
+  transition: width 460ms linear;
+}
+
+.style-rank[data-rank-index="1"] {
+  --rank-letter-size: 113px;
+  --rank-name-size: 19px;
+  --rank-stop-1: #fff;
+  --rank-stop-2: #dce7ff;
+  --rank-stop-3: #7e9cff;
+  --rank-stop-4: #284aa2;
+  --rank-stop-5: #0a1230;
+  --rank-glow: rgba(115, 160, 255, 0.36);
+}
+.style-rank[data-rank-index="2"] {
+  --rank-letter-size: 121px;
+  --rank-name-size: 20px;
+  --rank-stop-1: #f4fcff;
+  --rank-stop-2: #8dd9ff;
+  --rank-stop-3: #229cff;
+  --rank-stop-4: #0751b5;
+  --rank-stop-5: #041024;
+  --rank-glow: rgba(46, 168, 255, 0.5);
+}
+.style-rank[data-rank-index="3"] {
+  --rank-letter-size: 130px;
+  --rank-name-size: 21px;
+  --rank-stop-1: #fbfeff;
+  --rank-stop-2: #85d2ff;
+  --rank-stop-3: #347cff;
+  --rank-stop-4: #153a9a;
+  --rank-stop-5: #050d24;
+  --rank-glow: rgba(55, 145, 255, 0.62);
+}
+.style-rank[data-rank-index="4"] {
+  --rank-letter-size: 140px;
+  --rank-name-size: 22px;
+  --rank-stop-1: #fffbd2;
+  --rank-stop-2: #ffe36b;
+  --rank-stop-3: #ffad24;
+  --rank-stop-4: #c24f0e;
+  --rank-stop-5: #190502;
+  --rank-glow: rgba(255, 188, 42, 0.68);
+}
+.style-rank[data-rank-index="5"] {
+  --rank-letter-size: 150px;
+  --rank-name-size: 23px;
+  --rank-stop-1: #fffde2;
+  --rank-stop-2: #ffe66d;
+  --rank-stop-3: #ff9f24;
+  --rank-stop-4: #d94b14;
+  --rank-stop-5: #140303;
+  --rank-glow: rgba(255, 202, 36, 0.78);
+}
+.style-rank[data-rank-index="6"] {
+  --rank-letter-size: 160px;
+  --rank-name-size: 24px;
+  --rank-stop-1: #fffef0;
+  --rank-stop-2: #ffef7a;
+  --rank-stop-3: #ffb326;
+  --rank-stop-4: #e63218;
+  --rank-stop-5: #170302;
+  --rank-glow: rgba(255, 214, 55, 0.9);
+}
+
+.style-rank[data-rank-index="4"] .style-rank-name,
+.style-rank[data-rank-index="5"] .style-rank-name,
+.style-rank[data-rank-index="6"] .style-rank-name {
+  color: var(--gold-soft);
+}
+
+.style-rank.style-hit .style-rank-svg,
+.style-rank.style-hit .style-rank-name {
+  animation: styleHitPulse 240ms ease-out;
+}
+
+.style-rank.rank-up .style-rank-svg,
+.style-rank.rank-up .style-rank-name {
+  animation: rankUpImpact 420ms ease-out;
+}
+
+.style-rank.result-showcase .style-rank-svg {
+  animation: resultRankPulse 1.2s ease-in-out infinite;
+}

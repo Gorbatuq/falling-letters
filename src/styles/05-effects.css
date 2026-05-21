@@ -1,0 +1,256 @@
+.rank-sparks,
+.final-score-sparks,
+.score-sparks {
+  position: absolute;
+  z-index: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.rank-sparks {
+  left: var(--spark-x, 82px);
+  top: calc(var(--rank-letter-size) * 0.52);
+}
+
+.final-score-sparks {
+  left: var(--final-score-spark-x, 38px);
+  top: 40px;
+  z-index: 2;
+}
+
+.score-sparks {
+  left: 74px;
+  top: 58px;
+  z-index: 2;
+}
+
+.rank-spark,
+.final-score-spark,
+.score-spark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    #fff 0%,
+    rgba(255, 239, 153, 0.95) 30%,
+    rgba(255, 176, 45, 0.82) 60%,
+    transparent 74%
+  );
+  box-shadow:
+    0 0 8px rgba(255, 226, 118, 0.9),
+    0 0 18px rgba(255, 143, 38, 0.46);
+  opacity: 0;
+  transform: rotate(var(--angle)) translateX(8px) scale(0.5);
+  animation: sparkBurst var(--duration) ease-out infinite;
+  animation-delay: var(--delay);
+}
+
+.arena-orbit-drop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 24;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  opacity: 0;
+  offset-path: path("M 18 18 H 722 V 622 H 18 V 18");
+  offset-distance: 0%;
+  offset-anchor: center;
+  offset-rotate: auto;
+  will-change: offset-distance;
+}
+
+.arena-orbit-drop::before,
+.arena-orbit-drop::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+}
+
+.arena-orbit-drop::before {
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    #fff 0%,
+    rgba(255, 240, 154, 0.96) 28%,
+    rgba(255, 174, 42, 0.92) 58%,
+    rgba(255, 118, 28, 0) 78%
+  );
+  box-shadow:
+    0 0 14px rgba(255, 229, 126, 0.98),
+    0 0 32px rgba(255, 163, 52, 0.68),
+    0 0 54px rgba(255, 102, 34, 0.34);
+  transform: translate(-50%, -50%);
+}
+
+.arena-orbit-drop::after {
+  right: 14px;
+  width: 84px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 169, 54, 0.22),
+    rgba(255, 230, 134, 0.76)
+  );
+  transform: translateY(-50%);
+  filter: blur(1.4px);
+  opacity: 0.86;
+}
+
+.game-area.result-orbit .arena-orbit-drop {
+  opacity: 1;
+  animation: arenaOrbitDrop 8s linear infinite;
+}
+
+.arena-flash {
+  inset: 22px;
+  z-index: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--arena-flash-core) 0%,
+    var(--arena-flash-mid) 28%,
+    var(--arena-flash-edge) 50%,
+    transparent 72%
+  );
+  filter: blur(24px);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.arena-frame-glow {
+  inset: 18px;
+  z-index: 22;
+  border: 1px solid transparent;
+  opacity: 0;
+}
+
+.final-cracks {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.final-cracks.active {
+  opacity: 1;
+}
+
+.final-crack {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--length);
+  height: var(--thickness, 2px);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 246, 190, 0.9) 22%,
+    rgba(255, 192, 62, 0.86) 52%,
+    rgba(255, 70, 52, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 18%,
+    #000 74%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 18%,
+    #000 74%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 calc(5px * var(--glow-power, var(--power, 1)))
+      rgba(255, 228, 120, 0.82),
+    0 0 calc(13px * var(--glow-power, var(--power, 1)))
+      rgba(255, 148, 48, 0.38),
+    0 0 calc(25px * var(--glow-power, var(--power, 1)))
+      rgba(255, 72, 60, 0.18);
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform: translate3d(var(--x), var(--y), 0) rotate(var(--angle));
+  transform-origin: left center;
+  animation: finalCrackStrike var(--duration, 1050ms) ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+.final-crack::before,
+.final-crack::after {
+  content: "";
+  position: absolute;
+  left: 38%;
+  top: 50%;
+  width: calc(var(--length) * 0.42);
+  height: var(--branch-thickness, 1px);
+  border-radius: inherit;
+  background: inherit;
+  box-shadow: inherit;
+  -webkit-mask-image: inherit;
+  mask-image: inherit;
+  transform-origin: left center;
+}
+
+.final-crack::before {
+  transform: translateY(-50%) rotate(32deg) scaleX(0.72);
+}
+
+.final-crack::after {
+  left: 56%;
+  transform: translateY(-50%) rotate(-38deg) scaleX(0.46);
+  opacity: 0.75;
+}
+
+.game-area.final-impact {
+  --arena-flash-core: rgba(255, 245, 190, 0.48);
+  --arena-flash-mid: rgba(255, 174, 56, 0.28);
+  --arena-flash-edge: rgba(255, 61, 70, 0.13);
+  --arena-glow-border: rgba(255, 238, 178, 0.95);
+  --arena-glow-outer: rgba(255, 178, 46, 0.66);
+  --arena-glow-inner: rgba(255, 210, 88, 0.32);
+}
+
+.game-area.final-impact .arena-flash {
+  animation: finalArenaFlashPulse 1050ms ease-in-out forwards;
+}
+
+.game-area.final-impact .arena-frame-glow {
+  animation: finalArenaFramePulse 1050ms ease-in-out forwards;
+}
+
+.game-area.miss-impact {
+  --arena-flash-core: rgba(255, 51, 79, 0.38);
+  --arena-flash-mid: rgba(143, 29, 44, 0.24);
+  --arena-flash-edge: rgba(95, 12, 25, 0.1);
+  --arena-glow-border: rgba(255, 86, 106, 0.82);
+  --arena-glow-outer: rgba(255, 51, 79, 0.58);
+  --arena-glow-inner: rgba(255, 51, 79, 0.24);
+}
+
+.game-area.rank-impact .arena-flash {
+  animation: arenaFlashPulse 260ms ease-out;
+}
+.game-area.rank-impact .arena-frame-glow {
+  animation: arenaFramePulse 260ms ease-out;
+}
+
+.hidden {
+  display: none !important;
+}

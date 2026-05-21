@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #e8e2dc;
+  --muted: #9a8f91;
+  --silver: #c9c4bd;
+  --gold: #d8b35a;
+  --gold-soft: #f3d98b;
+  --blood: #8f1d2c;
+  --danger: #ff334f;
+  --bg: #130713;
+  --panel: rgba(24, 8, 18, 0.72);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 18% 18%,
+      rgba(143, 29, 44, 0.38),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 78% 12%,
+      rgba(95, 20, 48, 0.34),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 70% 82%,
+      rgba(65, 9, 29, 0.42),
+      transparent 42%
+    ),
+    linear-gradient(135deg, #210817 0%, #160713 42%, #07050b 100%);
+  color: var(--text);
+  font-family: "Marcellus SC", Georgia, serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  inset: -80px;
+  background:
+    repeating-radial-gradient(
+      circle at 12% 28%,
+      rgba(255, 255, 255, 0.035) 0 1px,
+      transparent 1px 18px
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(150, 35, 54, 0.13) 48%,
+      transparent 62%
+    );
+  opacity: 0.55;
+  filter: blur(0.2px);
+}
+
+body::after {
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 42%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size:
+    auto,
+    100% 4px;
+  opacity: 0.72;
+}
+
+.idle-letter-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.idle-letter-backdrop.active {
+  opacity: 1;
+}
+
+.idle-bg-letter {
+  position: absolute;
+  top: -32vh;
+  left: var(--x);
+  color: rgba(243, 217, 139, 0.13);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: var(--size);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.12em;
+  text-shadow:
+    0 0 26px rgba(216, 179, 90, 0.24),
+    0 0 72px rgba(216, 179, 90, 0.12),
+    8px 8px 0 rgba(0, 0, 0, 0.2);
+  transform: translate3d(0, -22vh, 0) rotate(var(--rotation));
+  filter: blur(0.2px);
+  opacity: 0;
+  animation: idleGoldenLetterFall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  animation-play-state: paused;
+  will-change: transform, opacity;
+}
+
+.idle-letter-backdrop.active .idle-bg-letter {
+  animation-play-state: running;
+}
